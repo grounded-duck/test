@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="https://w7.pngwing.com/pngs/520/820/png-transparent-rinnegan-supreme-sharingan-uchiha-sasuke-otsusuki-naruto-naruto-shippuden-madara-obito.png"/>
+    <title>Main Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        .balloon-container {
+			display: inline-block;
+			position: absolute;
+			z-index: 1;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.balloon-container .legend {
+			font-size: 14px;
+			color: #333;
+			margin-bottom: 5px;
+		}
+		
+
+		.balloon-container .balloon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 200px;
+			height: 50px;
+			background-color: #2196f3;
+			color: white;
+			font-size: 18px;
+			text-align: center;
+			border-radius: 10px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+			//border: 2px solid black;
+		}
+
+		.balloon-container .balloon:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+		}
+        .flags {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .flag {
+            width: 30px;
+            height: 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+    </style>
+	<script>
+		const translations = {
+			main: {
+				pt: {
+					legend: "Pergunta",
+					balloon: "Olá\n\nSou Victor, o freelancer #1 do Ranking Workana\nResolvo problemas como o seu diariamente\nEm pouco tempo criarei uma automação personalizada para a sua necessidade              "
+				},
+				es: {
+					legend: "Pregunta",
+					balloon: "Hola\n\nSoy Victor, el freelancer #1 del Ranking Workana \nResuelvo problemas como el suyo a diario\nEn poco tiempo crearé una automatización personalizada para su necesidad               "
+				},
+				en: {
+					legend: "UPWORK",
+					balloon: "Hello!\n\nI specialize in this type of projects! I have already carried out more than 500 projects similar to yours on the Workana.com plataform (can demonstrate if you want), and now I am also initiating my journey at Upwork!\nI have read the description of your project, and I will be able to provide you with the result as needed.\n\nI will provide you an Excel document with the full scraped data\nEtimated work time: less than 24 hours"
+				}
+			},
+			proposta_main: {
+				pt: {
+					legend: "Proposta",
+					balloon: "Programa desktop em python (.exe) que faz a varredura dos dados da listagem, e no final gera um arquivo Excel com os resultados separados em linha e coluna \n\n- Casos particulares: alguns sites requerem uma API captcha para integrar com o programa (pago à parte)\n- Casos raros: alguns sites bloqueiam o robô durante o desenvolvimento e impedem a automação. Nestes casos, concordamos em cancelar o projeto com 100% de devolução ao cliente, por motivos de força maior\n* Você precisa detalhar todo o escopo de forma completa antes de iniciarmos o projeto. Demandas fora do escopo inicial, assim como detalhes importantes não especificados, não entram no orçamento desta proposta"
+				},
+				es: {
+					legend: "Propuesta",
+					balloon: "Programa desktop en Python (.exe) que escanea los datos del listado, y al final genera un archivo Excel con los resultados separados en filas y columnas. \n\n- Casos particulares: algunos sitios requieren una API captcha para integrarse con el programa (pagada por separado)\n- Casos raros: algunos sitios bloquean el robot durante el desarrollo e impiden la automatización. En estos casos, acordamos cancelar el proyecto con devolución del 100% al cliente, por motivos de fuerza mayor\n* Es necesario detallar completamente todo el alcance antes de comenzar el proyecto. Las demandas fuera del alcance inicial, así como detalles importantes no especificados, no están incluidos en el presupuesto de esta propuesta"
+				},
+				en: {
+					legend: "",
+					balloon: ""
+				}
+			},
+			comunicacao_fora: {
+				pt: {
+					legend: "Comunicação fora",
+					balloon: "Cuidado! Só podemos fazer contato pelo chat. Qualquer tentativa de contato externo ao workana é golpe"
+				},
+				es: {
+					legend: "Comunicación fuera",
+					balloon: "Cuidado! Sólo podemos contactar vía chat. Cualquier intento de contactar desde fuera de workana es una estafa"
+				},
+				en: {
+					legend: "",
+					balloon: ""
+				}
+			},
+			mais_detalhes: {
+				pt: {
+					legend: "Vídeo",
+					balloon: "Tens como me passar um vídeo detalhando o passo a passo do processo manual como é feito hoje? Pode ser um vídeo sem som mesmo, só para me mostrar as etapas. Ou me envias prints se você preferir"
+				},
+				es: {
+					legend: "Video",
+					balloon: "Puedes pasarme un vídeo detallando el paso a paso del proceso manual como se hace hoy? Puede ser un video simple sin sonido, solo para mostrarme los pasos. O envíame pantallazos si lo prefieres"
+				},
+				en: {
+					legend: "",
+					balloon: ""
+				}
+			},
+			entrega_main: {
+				pt: {
+					legend: "Entrega",
+					balloon: "Olá!\n\nJá implementei no programa todas as funções que você me pediu, e verifiquei que o sistema está rodando sem erros\nTens como testar por favor?\nSó precisas baixar e extrair o .ZIP, e em seguida executar o program.exe com duplo clique\nSerá aberto um navegador automatizado que irá realizar todas as ações no site por conta própria\nOs dados são retirados do arquivo na pasta chamada Excel. Já deixei um exemplo pronto na pasta, então é só você rodar e visualizar como fica no final\nSó não recomendo de você mexer no navegador automatizado durante a operação, pois o seu site é um tanto sensível e isto pode atrapalhar a automação\n\nFico no aguardo da sua avaliação, obrigado!!"
+				},
+				es: {
+					legend: "Entrega",
+					balloon: "Hola!\n\nYa implementé en el programa todas las funciones que me pediste, y he verificado que el sistema está funcionando sin errores\nPuedes probarlo por favor?\nSólo necesita descargar y extraer el .ZIP y luego hacer doble clic en el programa.exe\nSe abrirá un navegador automatizado que realizará todas las acciones en el sitio por sí solo\nLos datos se toman del archivo en la carpeta llamada Excel. Ya dejé un ejemplo listo en la carpeta, así que ejecútelo y vea cómo se ve al final\nSOlo no recomiendo interactuar con el navegador automatizado durante el funcionamiento, ya que su sitio es algo sensible y esto podría interferir en la automatización\n\nEspero su evaluación, gracias!!"
+				},
+				en: {
+					legend: "",
+					balloon: ""
+				}
+			},
+			
+			
+			
+			
+			
+			EMPTY: {
+				pt: {
+					legend: "",
+					balloon: ""
+				},
+				es: {
+					legend: "",
+					balloon: ""
+				},
+				en: {
+					legend: "",
+					balloon: ""
+				}
+			}			
+		};
+
+		function setLanguage(lang) {
+			const containers = document.querySelectorAll('.balloon-container'); // Seleciona todos os containers de balões
+			const balloonKeys = Array.from(containers).map(container => {
+				const balloonClass = Array.from(container.classList).find(cls => cls.startsWith('balloon2-'));
+				return balloonClass ? balloonClass.replace('balloon2-', '') : null;
+			}).filter(key => key); // Filtra classes inválidas ou nulas
+
+			balloonKeys.forEach(key => {
+				const container = document.querySelector(`.balloon2-${key}`);
+				if (container) {
+					const legend = container.querySelector('.legend');
+					const balloon = container.querySelector('.balloon');
+
+					if (legend) legend.textContent = translations[key][lang].balloon;
+					if (balloon) balloon.innerHTML = translations[key][lang].legend;
+				}
+			});
+		}
+
+
+		function copyToClipboardFromElement(element) {
+			const balloonContent = element.querySelector('.legend').textContent || element.querySelector('.legend').innerText;
+			navigator.clipboard.writeText(balloonContent).catch(err => {
+				console.error("Erro ao copiar o texto: ", err);
+			});
+		}
+		
+		
+		function drawLineBetweenBalloons(class1, class2) {
+			const div1 = document.querySelector(`.${class1}`);
+			const div2 = document.querySelector(`.${class2}`);
+			if (!div1 || !div2) {
+				console.error("Uma ou ambas as classes especificadas não foram encontradas.");
+				return;
+			}
+
+			const rect1 = div1.getBoundingClientRect();
+			const rect2 = div2.getBoundingClientRect();
+
+			const x1 = rect1.left + rect1.width / 2;
+			const y1 = rect1.top + rect1.height / 2;
+			const x2 = rect2.left + rect2.width / 2;
+			const y2 = rect2.top + rect2.height / 2;
+
+			const line = document.createElement("div");
+			line.style.position = "absolute";
+			line.style.backgroundColor = "black";
+			line.style.height = "6px"; // Espessura da linha
+			line.style.transformOrigin = "0 0";
+			line.style.zIndex = "-1"; // Garante que fique atrás das divs
+
+			const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+			const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+
+			line.style.width = `${length}px`;
+			line.style.transform = `rotate(${angle}deg)`;
+			line.style.left = `${x1}px`;
+			line.style.top = `${y1}px`;
+
+			document.body.appendChild(line);
+		}
+
+
+
+
+
+
+		document.addEventListener("DOMContentLoaded", () => {
+			drawLineBetweenBalloons('balloon2-main', 'balloon2-mais_detalhes');
+			drawLineBetweenBalloons('balloon2-main', 'balloon2-comunicacao_fora');
+			drawLineBetweenBalloons('balloon2-proposta_main', 'balloon2-entrega_main');
+			
+			
+		});
+	</script>
+</head>
+<body>
+    <div class="flags">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" class="flag" alt="Português" onclick="setLanguage('pt')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" class="flag" alt="Español" onclick="setLanguage('es')">
+		<img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" class="flag" alt="English" onclick="setLanguage('en')">
+    </div>
+    <div class="container">
+        <div class="balloon-container balloon2-main" style="top: 100px; left: calc(50% - 100px);" onclick="copyToClipboardFromElement(this)">
+			<div class="legend" style="display:none">&nbsp;</div>
+			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
+		</div>
+
+		<div class="balloon-container balloon2-mais_detalhes" style="position: absolute; top: 200px; left: calc(50% - 220px);" onclick="copyToClipboardFromElement(this)">
+			<div class="legend" style="display:none">&nbsp;</div>
+			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
+		</div>
+		<div class="balloon-container balloon2-comunicacao_fora" style="position: absolute; top: 200px; left: calc(50% + 20px);" onclick="copyToClipboardFromElement(this)">
+			<div class="legend" style="display:none">&nbsp;</div>
+			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
+		</div>
+		
+		
+		
+		<div class="balloon-container balloon2-proposta_main" style="position: absolute; top: 400px; left: calc(50% - 220px);" onclick="copyToClipboardFromElement(this)">
+			<div class="legend" style="display:none">&nbsp;</div>
+			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
+		</div>
+		<div class="balloon-container balloon2-entrega_main" style="position: absolute; top: 500px; left: calc(50% - 220px);" onclick="copyToClipboardFromElement(this)">
+			<div class="legend" style="display:none">&nbsp;</div>
+			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
+		</div>
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+    <!-- Caixa flutuante para a calculadora -->
+    <div id="currency-calculator" style="
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        font-size: 16px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: 300px;
+        text-align: center;
+    ">
+        <div>
+            <input id="usd-input" type="number" value="1" min="0" step="1" style="width: 80px; text-align: center;"> 
+            USD = 
+            <input id="brl-input" type="number" value="0" min="0" step="1" style="width: 100px; text-align: center;"> 
+            BRL
+        </div>
+    </div>
+
+    <script>
+        let exchangeRate = 1; // Variável para armazenar a cotação do dólar
+
+        async function fetchDollarQuote() {
+            try {
+                const response = await fetch("https://economia.awesomeapi.com.br/json/daily/USD-BRL");
+                const data = await response.json();
+                exchangeRate = parseFloat(data[0]?.bid || 1); // Define a cotação como o valor do bid
+                updateBRL(); // Atualiza o campo BRL com base na cotação inicial
+            } catch (error) {
+                console.error("Erro ao obter a cotação do dólar:", error);
+            }
+        }
+
+        function updateBRL() {
+            const usdValue = parseFloat(document.getElementById("usd-input").value) || 0;
+            document.getElementById("brl-input").value = (usdValue * exchangeRate).toFixed(2);
+        }
+
+        function updateUSD() {
+            const brlValue = parseFloat(document.getElementById("brl-input").value) || 0;
+            document.getElementById("usd-input").value = (brlValue / exchangeRate).toFixed(2);
+        }
+
+        // Adiciona os eventos de input para recalcular os valores
+        document.getElementById("usd-input").addEventListener("input", updateBRL);
+        document.getElementById("brl-input").addEventListener("input", updateUSD);
+
+        // Obtém a cotação inicial ao carregar a página
+        fetchDollarQuote();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
