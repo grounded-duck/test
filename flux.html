@@ -261,6 +261,20 @@
 					balloon: ""
 				}
 			},
+			descuento: {
+				pt: {
+					legend: "Desconto",
+					balloon: "*Este orçamento que enviei é para um prazo de entrega de no máximo 2 dias. Se você não tiver pressa e escolher um prazo de entrega duas vezes maior, o orçamento será 15% menor, ou se você escolher um prazo de entrega três vezes maior, o orçamento cairá em 30%"
+				},
+				es: {
+					legend: "Descuento",
+					balloon: "*Este presupuesto que he enviado és para el plazo de entrega de máximo 2 dias. Si no tienes prisa y escojes un plazo de entrega del doble, el presupuesto será 15% menor, o si escojes un plazo del triple, el presupuesto cae en 30%"
+				},
+				en: {
+					legend: "",
+					balloon: ""
+				}
+			},
 
 			
 			
@@ -355,7 +369,7 @@
 			drawLineBetweenBalloons('balloon2-main', 'balloon2-comunicacao_fora');
 			drawLineBetweenBalloons('balloon2-proposta_main', 'balloon2-pos_proposta');
 			//drawLineBetweenBalloons('balloon2-mais_detalhes', 'balloon2-video');
-			drawLineBetweenBalloons('balloon2-proposta_mini', 'balloon2-pos_proposta_fake');
+			//drawLineBetweenBalloons('balloon2-proposta_mini', 'balloon2-pos_proposta_fake');
 			drawLineBetweenBalloons('balloon2-entrega_main', 'balloon2-entrega_mini');
 			drawLineBetweenBalloons('balloon2-apelando', 'balloon2-comunicacao_fora');
 			drawLineBetweenBalloons('balloon2-comunicacao_fora', 'balloon2-video');
@@ -364,6 +378,8 @@
 			drawLineBetweenBalloons('balloon2-mais_detalhes', 'balloon2-video');
 			drawLineBetweenBalloons('balloon2-pos_proposta_fake', 'balloon2-instrucoes');
 			drawLineBetweenBalloons('balloon2-pos_proposta', 'balloon2-instrucoes');
+			drawLineBetweenBalloons('balloon2-pos_proposta', 'balloon2-descuento');
+			
 			
 			
 			
@@ -442,7 +458,10 @@
 		</div>
 		
 		
-		
+		<div class="balloon-container balloon2-descuento" style="position: absolute; top: 440px; left: calc(50% - 340px);" onclick="copyToClipboardFromElement(this)">
+			<div class="legend" style="display:none">&nbsp;</div>
+			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
+		</div>
 		<div class="balloon-container balloon2-instrucoes" style="position: absolute; top: 440px; left: calc(50% - 100px);" onclick="copyToClipboardFromElement(this)">
 			<div class="legend" style="display:none">&nbsp;</div>
 			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
