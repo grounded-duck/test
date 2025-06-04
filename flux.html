@@ -61,18 +61,25 @@
             margin: 5px;
             cursor: pointer;
         }
+		.flag.selected {
+			border: 3px solid black;
+			//box-sizing: border-box; /* garante que a borda não aumente o tamanho total da imagem */
+		}
+
         
     </style>
+
+
 	<script>
 		const translations = {
 			main: {
 				pt: {
 					legend: "[ Pergunta ]",
-					balloon: "Olá\n\nSou Victor, o freelancer #1 do Ranking Workana\nResolvo problemas como o seu diariamente\nEm pouco tempo criarei uma automação personalizada para a sua necessidade              "
+					balloon: "olá, sou Victor, o freelancer Rank #1 do Workana\njá terminei centenas de projetos como o seu, e posso resolver o seu problema sem enrolação                               "
 				},
 				es: {
 					legend: "[ Pregunta ]",
-					balloon: "Hola\n\nSoy Victor, el freelancer #1 del Ranking Workana\nResuelvo problemas como el suyo a diario\nEn poco tiempo crearé una automatización personalizada para su necesidad               "
+					balloon: "hola, soy Victor, el freelancer Rank #1 de Workana\nya terminé cientos de proyectos como el suyo, y puedo resolver su problema sin rodeos                                "
 				},
 				en: {
 					legend: "UPWORK",
@@ -82,11 +89,11 @@
 			proposta_main: {
 				pt: {
 					legend: "[ Proposta sites ]",
-					balloon: "Programa desktop em python (.exe) que faz a varredura dos dados da listagem, e no final gera um arquivo Excel com os resultados separados em linha e coluna \n\n- Casos particulares: alguns sites requerem uma API captcha para integrar com o programa (pago à parte)\n- Casos raros: alguns sites bloqueiam o robô durante o desenvolvimento e impedem a automação. Nestes casos, concordamos em cancelar o projeto com 100% de devolução ao cliente, por motivos de força maior\n* Você precisa detalhar todo o escopo de forma completa antes de iniciarmos o projeto. Demandas fora do escopo inicial, assim como detalhes importantes não especificados, não entram no orçamento desta proposta"
+					balloon: "Programa desktop em python (.exe) que automatiza as ações solicitadas \n\n- Casos particulares: alguns sites requerem uma API captcha para integrar com o programa (pago à parte)\n- Casos raros: alguns sites bloqueiam o robô durante o desenvolvimento e impedem a automação. Nestes casos, concordamos em cancelar o projeto com 100% de devolução ao cliente, por motivos de força maior\n* Você precisa detalhar todo o escopo de forma completa antes de iniciarmos o projeto. Demandas fora do escopo inicial, assim como detalhes importantes não especificados, não entram no orçamento desta proposta"
 				},
 				es: {
 					legend: "[ Propuesta sitios ]",
-					balloon: "Programa desktop en Python (.exe) que escanea los datos del listado, y al final genera un archivo Excel con los resultados separados en filas y columnas. \n\n- Casos particulares: algunos sitios requieren una API captcha para integrarse con el programa (pagada por separado)\n- Casos raros: algunos sitios bloquean el robot durante el desarrollo e impiden la automatización. En estos casos, acordamos cancelar el proyecto con devolución del 100% al cliente, por motivos de fuerza mayor\n* Es necesario detallar completamente todo el alcance antes de comenzar el proyecto. Las demandas fuera del alcance inicial, así como detalles importantes no especificados, no están incluidos en el presupuesto de esta propuesta"
+					balloon: "Programa desktop en Python (.exe) que automatiza las acciones requeridas \n\n- Casos particulares: algunos sitios requieren una API captcha para integrarse con el programa (pagada por separado)\n- Casos raros: algunos sitios bloquean el robot durante el desarrollo e impiden la automatización. En estos casos, acordamos cancelar el proyecto con devolución del 100% al cliente, por motivos de fuerza mayor\n* Es necesario detallar completamente todo el alcance antes de comenzar el proyecto. Las demandas fuera del alcance inicial, así como detalles importantes no especificados, no están incluidos en el presupuesto de esta propuesta"
 				},
 				en: {
 					legend: "",
@@ -110,11 +117,25 @@
 			comunicacao_fora: {
 				pt: {
 					legend: "Comunicação fora",
-					balloon: "Cuidado! Só podemos fazer contato pelo chat. Qualquer tentativa de contato externo ao workana é golpe"
+					balloon: "cuidado! só podemos nos comunicar pelo chat. tentar contatar por outros meios é indicativo de golpe"
 				},
 				es: {
 					legend: "Comunicación fuera",
-					balloon: "Cuidado! Sólo podemos contactar vía chat. Cualquier intento de contactar desde fuera de workana es una estafa"
+					balloon: "cuidado! sólo podemos comunicarnos por el chat. intentar contactar por otros medios indica estafa"
+				},
+				en: {
+					legend: "",
+					balloon: ""
+				}
+			},
+			comunicacao_fora_2: {
+				pt: {
+					legend: "Comunicação fora 2",
+					balloon: "a chamada do workana funciona por um sistema tercerizado, o que significa que eles não tem qualquer controle do que acontece lá dentro. justamente por isso acabou se tornando o meio favorito para freelas/clientes golpistas, e sou obrigado a desconsiderar projetos que tentem contatar por lá"
+				},
+				es: {
+					legend: "Comunicación fuera 2",
+					balloon: "el sistema de llamada de Workana es externalizado, lo que significa que ellos mismos no tienen control sobre lo que ocurre allí. precisamente por eso se ha convertido en el medio preferido de freelas/clientes estafadores, y me veo obligado a descartar proyectos que intentan contactar a través de ella"
 				},
 				en: {
 					legend: "",
@@ -124,11 +145,11 @@
 			video: {
 				pt: {
 					legend: "Vídeo",
-					balloon: "Tens como me passar um vídeo detalhando o passo a passo do processo manual como é feito hoje? Pode ser um vídeo sem som mesmo, só para me mostrar as etapas. Ou me envias prints se você preferir"
+					balloon: "você pode me enviar um video/Word/prints? mostrando o passo a passo do processo manual como é feito hoje. assim eu avalio a complexidade de automatizar"
 				},
 				es: {
 					legend: "Video",
-					balloon: "Puedes pasarme un vídeo detallando el paso a paso del proceso manual como se hace hoy? Puede ser un video simple sin sonido, solo para mostrarme los pasos. O envíame pantallazos si lo prefieres"
+					balloon: "puedes enviarme un video/Word/pantallazos? mostrando el paso a paso del proceso manual como se hace hoy. asi evaluo la complejidad de automatizarlo"
 				},
 				en: {
 					legend: "",
@@ -166,11 +187,11 @@
 			carrito: {
 				pt: {
 					legend: "Carrinho",
-					balloon: "olá amigo! ainda precisas de ajuda com o seu projeto?"
+					balloon: "olá amigo! você ainda precis de ajuda com seu projeto?"
 				},
 				es: {
 					legend: "Carrito",
-					balloon: "hola amigo! aún necesitas de ayuda con su proyecto?"
+					balloon: "hola amigo! aún necesitas ayuda con su proyecto?"
 				},
 				en: {
 					legend: "",
@@ -194,11 +215,11 @@
 			mais_detalhes: {
 				pt: {
 					legend: "Mais detalhes",
-					balloon: "Tens como me passar mais detalhes? Assim já termino de avaliar e te passo orçamento"
+					balloon: "você pode me passar mais detalhes? assim já termino de avaliar e te passo orçamento"
 				},
 				es: {
 					legend: "Más detalles",
-					balloon: "Puedes darme más detalles? Así termino de evaluar y le doy un presupuesto"
+					balloon: "puedes darme más detalles? así termino de evaluar y le doy un presupuesto"
 				},
 				en: {
 					legend: "",
@@ -222,11 +243,11 @@
 			pos_proposta: {
 				pt: {
 					legend: "Pós proposta",
-					balloon: "Pronto, acabei de lhe enviar uma proposta agora. Consegues visualizar os detalhes?    (talvez seja preciso atualizar a página pra proposta aparecer)"
+					balloon: "pronto, acabei de enviar uma proposta agora. você chegou a ver? tenta atualizar a página"
 				},
 				es: {
 					legend: "Pós propuesta",
-					balloon: "Listo, acabo de enviarle una propuesta. Logras ver los detalles?    (talvez necesites actualizar la página para que la propuesta aparezca)"
+					balloon: "listo, acabo de enviarle una propuesta. logras verla? intenta recargar la página"
 				},
 				en: {
 					legend: "",
@@ -236,11 +257,11 @@
 			instrucoes: {
 				pt: {
 					legend: "Instruções",
-					balloon: "Agora, você só precisa dar o aceite na proposta que enviei, e em seguida o Workana já mostrará as opções para depósito da garantia, e assim iniciamos o projeto oficialmente"
+					balloon: "agora, você só precisa clicar em 'aceitar proposta', e em seguida o Workana já mostrará as opções para depósito da garantia, e assim iniciamos o projeto oficialmente"
 				},
 				es: {
 					legend: "Instruciones",
-					balloon: "Ahora, solo debes aceptar la propuesta que he enviado, y en seguida Workana ya le mostrará las opciones para depositar la garantía, y así iniciamos oficialmente el proyecto"
+					balloon: "ahora, solo debes dar click en 'aceptar propuesta', y en seguida Workana ya le mostrará las opciones para depositar la garantía, y así iniciamos oficialmente el proyecto"
 				},
 				en: {
 					legend: "",
@@ -250,11 +271,11 @@
 			pos_proposta_fake: {
 				pt: {
 					legend: "Pós proposta indefinida",
-					balloon: "Pronto, acabei de lhe enviar uma proposta geral para este tipo de projetos. Consegues visualizar os detalhes? (talvez seja preciso atualizar a página)... Mas preciso que você me confirme os detalhes, assim lhe confirmo a proposta atual e seguimos, ou faço ajustas conforme o seu caso particular"
+					balloon: "pronto, acabei de enviar uma proposta agora. você chegou a ver? tenta atualizar a página... mas preciso que você me confirme os detalhes, assim confirmo a proposta atual e seguimos, ou faço ajustes conforme o seu caso particular"
 				},
 				es: {
 					legend: "Pós propuesta indefinida",
-					balloon: "Listo, acabo de enviarle una propuesta general para este tipo de proyectos. Logras ver los detalles? (es posible que necesites actualizar la página)... Pero necesito que confirmes los detalles, así le confirmo la propuesta actual y seguimos, o hago ajustes según su caso particular"
+					balloon: "listo, acabo de enviarle una propuesta. logras verla? intenta recargar la página... pero necesito que confirmes los detalles, así le confirmo la propuesta y seguimos, o hago ajustes según su caso particular"
 				},
 				en: {
 					legend: "",
@@ -264,11 +285,11 @@
 			descuento: {
 				pt: {
 					legend: "Desconto",
-					balloon: "*Este orçamento que enviei é para um prazo de entrega de no máximo 2 dias. Se você não tiver pressa e escolher um prazo de entrega duas vezes maior, o orçamento será 15% menor, ou se você escolher um prazo de entrega três vezes maior, o orçamento cairá em 30%"
+					balloon: "*este orçamento que enviei é para um prazo de entrega de no máximo 2 dias. Se você não tiver pressa e escolher um prazo de entrega duas vezes maior, o orçamento será 15% menor, ou se você escolher um prazo de entrega três vezes maior, o orçamento cairá em 30%"
 				},
 				es: {
 					legend: "Descuento",
-					balloon: "*Este presupuesto que he enviado és para el plazo de entrega de máximo 2 dias. Si no tienes prisa y escojes un plazo de entrega del doble, el presupuesto será 15% menor, o si escojes un plazo del triple, el presupuesto cae en 30%"
+					balloon: "*este presupuesto que he enviado és para el plazo de entrega de máximo 2 dias. Si no tienes prisa y escojes un plazo de entrega del doble, el presupuesto será 15% menor, o si escojes un plazo del triple, el presupuesto cae en 30%"
 				},
 				en: {
 					legend: "",
@@ -314,6 +335,15 @@
 					if (balloon) balloon.innerHTML = translations[key][lang].legend;
 				}
 			});
+			
+			// Remove a classe 'selected' de todas as bandeiras
+			document.querySelectorAll('.flag').forEach(flag => {
+				flag.classList.remove('selected');
+			});
+
+			// Adiciona a classe 'selected' apenas à bandeira clicada
+			const clickedFlag = event.currentTarget;
+			clickedFlag.classList.add('selected');
 		}
 
 
@@ -373,6 +403,7 @@
 			drawLineBetweenBalloons('balloon2-entrega_main', 'balloon2-entrega_mini');
 			drawLineBetweenBalloons('balloon2-apelando', 'balloon2-comunicacao_fora');
 			drawLineBetweenBalloons('balloon2-comunicacao_fora', 'balloon2-video');
+			drawLineBetweenBalloons('balloon2-comunicacao_fora', 'balloon2-comunicacao_fora_2');
 			drawLineBetweenBalloons('balloon2-pos_proposta', 'balloon2-proposta_mini');
 			
 			drawLineBetweenBalloons('balloon2-mais_detalhes', 'balloon2-video');
@@ -410,6 +441,10 @@
 			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
 		</div>
 		<div class="balloon-container balloon2-comunicacao_fora" style="position: absolute; top: 120px; left: calc(50% + 20px);" onclick="copyToClipboardFromElement(this)">
+			<div class="legend" style="display:none">&nbsp;</div>
+			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
+		</div>
+		<div class="balloon-container balloon2-comunicacao_fora_2" style="position: absolute; top: 120px; left: calc(50% + 250px);" onclick="copyToClipboardFromElement(this)">
 			<div class="legend" style="display:none">&nbsp;</div>
 			<div class="balloon" style="overflow: hidden; resize: none; font-size: 18px">&nbsp;</div>
 		</div>
